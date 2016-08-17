@@ -11,6 +11,7 @@
 
     <modules>
         <module>rq1_particle-1D</module>
+        <module>rq2_finite-rw-1D</module>
     </modules>
 
     <dependencies>
