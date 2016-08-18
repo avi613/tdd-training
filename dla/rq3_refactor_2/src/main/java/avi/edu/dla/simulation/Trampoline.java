@@ -1,4 +1,4 @@
-package dla.simulation;
+package avi.edu.dla.simulation;
 
 public class Trampoline<T> {
     public T getCurrent() {

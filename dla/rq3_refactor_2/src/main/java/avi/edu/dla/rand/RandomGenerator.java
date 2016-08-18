@@ -1,4 +1,4 @@
-package dla.rand;
+package avi.edu.dla.rand;
 
 import java.util.Random;
 

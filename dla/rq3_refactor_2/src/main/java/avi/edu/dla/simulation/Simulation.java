@@ -1,7 +1,7 @@
-package dla.simulation;
+package avi.edu.dla.simulation;
 
 
-import dla.rand.RandomGenerator;
+import avi.edu.dla.rand.RandomGenerator;
 import lombok.Value;
 
 @Value
