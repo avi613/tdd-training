@@ -2,11 +2,14 @@ package avi.edu.factorial;
 
 public class Factorial {
     public Trampoline<Integer> of(final int initialNumber, int result) {
-        return initialNumber == 1 ? new Trampoline<Integer>() {
-            public Integer get() {
-                return result;
-            }
-        } : new Trampoline<Integer>() {
+        if (initialNumber == 1)
+            return new Trampoline<Integer>() {
+                public Integer get() {
+                    return result;
+                }
+            };
+
+        return new Trampoline<Integer>() {
             public Trampoline<Integer> run() {
                 System.out.println("current number: " + initialNumber + ", current result: " + result);
                 return of(initialNumber - 1, result * initialNumber);
