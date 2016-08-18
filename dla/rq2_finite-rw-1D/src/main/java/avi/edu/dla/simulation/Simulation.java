@@ -13,11 +13,13 @@ public class Simulation {
 
         System.out.println("current step is: " + numberOfSteps);
         System.out.println("current position is: " + current);
-        int nextMove = randomGenerator.nextMove();
-        System.out.println("next move is: " + nextMove);
 
         if (numberOfSteps == 0)
             return current;
+
+        int nextMove = randomGenerator.nextMove();
+        System.out.println("next move is: " + nextMove);
+
         return simulate(numberOfSteps - 1, current + nextMove);
     }
 
