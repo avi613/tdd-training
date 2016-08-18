@@ -14,6 +14,7 @@
         <module>rq2_finite-rw-1D</module>
         <module>rq3_dla-1D</module>
         <module>rq3_refactor_1</module>
+        <module>rq3_refactor_2</module>
     </modules>
 
     <dependencies>
