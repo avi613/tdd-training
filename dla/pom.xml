@@ -16,6 +16,7 @@
         <module>rq3_refactor_1</module>
         <module>rq3_refactor_2</module>
         <module>rq4_rw-2D</module>
+        <module>rq5_rw-2D-box</module>
     </modules>
 
     <dependencies>
