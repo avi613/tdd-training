@@ -18,6 +18,7 @@
         <module>rq4_rw-2D</module>
         <module>rq5_rw-2D-box</module>
         <module>rq6_touch-condition</module>
+        <module>rq6_refactor_1</module>
     </modules>
 
     <dependencies>
