@@ -19,6 +19,7 @@
         <module>rq5_rw-2D-box</module>
         <module>rq6_touch-condition</module>
         <module>rq6_refactor_1</module>
+        <module>rq7_multi-particles</module>
     </modules>
 
     <dependencies>
