@@ -4,7 +4,6 @@ import avi.edu.dla.boundary.Boundary;
 import avi.edu.dla.movement.Movement;
 import avi.edu.dla.particle.Particle;
 import avi.edu.dla.rand.RandomGenerator;
-import com.google.common.collect.ImmutableList;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
