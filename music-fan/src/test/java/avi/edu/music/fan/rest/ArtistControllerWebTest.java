@@ -1,5 +1,6 @@
 package avi.edu.music.fan.rest;
 
+import avi.edu.music.fan.artist.Artist;
 import avi.edu.music.fan.service.ArtistService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -32,5 +34,14 @@ public class ArtistControllerWebTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/artists").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("This is a unit test mocking a web rest server")));
+    }
+
+    @Test
+    public void should_get_artist_by_id() throws Exception {
+        Artist eddie = new Artist("van", "Eddie Van Hallen");
+        when(artistService.getById(anyString())).thenReturn(eddie);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/artists/whateverId").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }

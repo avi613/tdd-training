@@ -1,5 +1,6 @@
 package avi.edu.music.fan.rest;
 
+import avi.edu.music.fan.artist.Artist;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,18 +21,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ArtistControllerIT {
     @LocalServerPort
     private int port;
-    private URL base;
+    private URL baseURL;
     @Autowired
     private TestRestTemplate restTemplate = new TestRestTemplate();
 
     @Before
     public void setUp() throws MalformedURLException {
-        this.base = new URL("http://localhost:" + port + "/artists");
+        this.baseURL = new URL("http://localhost:" + port + "/artists");
     }
 
     @Test
     public void should_say_hello() {
-        ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(baseURL.toString(), String.class);
         assertThat(response.getBody()).isEqualTo("Hello You Music Fan!");
+    }
+
+    @Test
+    public void should_get_artist_by_id() {
+        ResponseEntity<Artist> response = restTemplate.getForEntity(baseURL.toString() + "/1", Artist.class);
+        assertThat(response.getBody()).isEqualTo(new Artist("1", "Serges Gainsbourg"));
     }
 }
