@@ -42,6 +42,14 @@ public class ArtistControllerWebTest {
         when(artistService.getById(anyString())).thenReturn(eddie);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/artists/whateverId").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().json("{id: van, name: Eddie Van Hallen}"));
+    }
+
+    @Test
+    public void should_get_not_found_status() throws Exception {
+        when(artistService.getById(anyString())).thenReturn(null);
+        mockMvc.perform(MockMvcRequestBuilders.get("/artists/bad-id").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }

@@ -1,11 +1,14 @@
 package avi.edu.music.fan.rest;
 
 import avi.edu.music.fan.artist.Artist;
+import avi.edu.music.fan.rest.exception.ArtistNotFoundException;
 import avi.edu.music.fan.service.ArtistService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/artists")
@@ -23,6 +26,7 @@ public class ArtistController {
 
     @RequestMapping("/{id}")
     public Artist getById(@PathVariable("id") String id) {
-        return artistService.getById(id);
+        return Optional.ofNullable(artistService.getById(id))
+                .orElseThrow(() -> new ArtistNotFoundException("for id: " + id));
     }
 }
