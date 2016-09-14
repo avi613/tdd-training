@@ -5,11 +5,13 @@ import avi.edu.music.fan.artist.ArtistView;
 import avi.edu.music.fan.rest.exception.ArtistNotFoundException;
 import avi.edu.music.fan.service.ArtistService;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.google.common.collect.ImmutableList;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,9 +23,18 @@ public class ArtistController {
         this.artistService = artistService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello() {
         return artistService.sayHello();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Artist> getAllArtists() {
+        return ImmutableList.of(
+                new Artist("neil", "Neil Young"),
+                new Artist("jimi", "Jimi Hendrix"),
+                new Artist("tim", "Tim Reynolds")
+        );
     }
 
     @RequestMapping("/{id}")

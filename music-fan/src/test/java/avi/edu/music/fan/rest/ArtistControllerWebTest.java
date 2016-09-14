@@ -24,16 +24,22 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 @AutoConfigureMockMvc
 public class ArtistControllerWebTest {
     private ArtistService artistService = mock(ArtistService.class);
-
     private MockMvc mockMvc = standaloneSetup(new ArtistController(artistService)).build();
 
     @Test
     public void should_say_hello() throws Exception {
         when(artistService.sayHello()).thenReturn("This is a unit test mocking a web rest server");
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/artists").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(MockMvcRequestBuilders.get("/artists/hello").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("This is a unit test mocking a web rest server")));
+    }
+
+    @Test
+    public void should_get_all_artists() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/artists").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{\"id\":\"neil\",\"name\":\"Neil Young\"},{\"id\":\"jimi\",\"name\":\"Jimi Hendrix\"},{\"id\":\"tim\",\"name\":\"Tim Reynolds\"}]"));
     }
 
     @Test
