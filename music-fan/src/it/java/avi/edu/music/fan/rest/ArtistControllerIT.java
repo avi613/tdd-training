@@ -1,6 +1,8 @@
 package avi.edu.music.fan.rest;
 
 import avi.edu.music.fan.artist.Artist;
+import avi.edu.music.fan.artist.Fact;
+import com.google.common.collect.ImmutableList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +16,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ArtistControllerIT {
     @LocalServerPort
     private int port;
@@ -40,14 +43,18 @@ public class ArtistControllerIT {
     @Test
     public void should_get_all_artists() {
         ResponseEntity<String> response = restTemplate.getForEntity(baseURL.toString(), String.class);
-        assertThat(response.getBody()).isEqualTo("[{\"id\":\"1\",\"name\":\"Serges Gainsbourg\"},{\"id\":\"2\",\"name\":\"Georges Brassens\"},{\"id\":\"3\",\"name\":\"Edit Piaf\"}]");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo("[{\"id\":\"1\",\"name\":\"Serges Gainsbourg\"},{\"id\":\"2\",\"name\":\"Georges Brassens\"},{\"id\":\"3\",\"name\":\"Edit Piaf\"},{\"id\":\"4\",\"name\":\"Neil Young\"},{\"id\":\"5\",\"name\":\"Jimi Hendrix\"}]");
     }
 
     @Test
     public void should_get_artist_by_id() {
         ResponseEntity<Artist> response = restTemplate.getForEntity(baseURL.toString() + "/1", Artist.class);
-        assertThat(response.getBody()).isEqualTo(new Artist("1", "Serges Gainsbourg"));
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(new Artist("1", "Serges Gainsbourg", ImmutableList.of(
+                new Fact(1473975159088L, "Coco", "Il a eu de nombreux styles musicaux"),
+                new Fact(1473975159068L, "Edouard", "Il a tout de même brûlé un billet de 500 balles!")
+        )));
     }
 
     @Test

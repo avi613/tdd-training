@@ -12,5 +12,5 @@ public class Artist {
     @JsonView(ArtistPreview.class)
     private String name;
 
-    //private List<Fact> facts;
+    private List<Fact> facts;
 }
