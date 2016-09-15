@@ -2,7 +2,6 @@ package avi.edu.music.fan.rest;
 
 import avi.edu.music.fan.artist.Artist;
 import avi.edu.music.fan.service.ArtistService;
-import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,6 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
+import static avi.edu.music.fan.MockDB.mockData;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -29,11 +29,7 @@ public class ArtistControllerWebTest {
     private ArtistService artistService = mock(ArtistService.class);
     private MockMvc mockMvc = standaloneSetup(new ArtistController(artistService)).build();
 
-    private List<Artist> artists = ImmutableList.of(
-            new Artist("neil", "Neil Young"),
-            new Artist("jimi", "Jimi Hendrix"),
-            new Artist("tim", "Tim Reynolds")
-    );
+    private List<Artist> artists = mockData();
 
     @Test
     public void should_say_hello() throws Exception {

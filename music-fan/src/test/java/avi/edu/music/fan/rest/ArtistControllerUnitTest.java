@@ -10,6 +10,7 @@ import org.junit.rules.ExpectedException;
 
 import java.util.List;
 
+import static avi.edu.music.fan.MockDB.mockData;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -19,11 +20,7 @@ public class ArtistControllerUnitTest {
     private ArtistService artistService = mock(ArtistService.class);
     private ArtistController artistController = new ArtistController(artistService);
 
-    private List<Artist> artists = ImmutableList.of(
-            new Artist("neil", "Neil Young"),
-            new Artist("jimi", "Jimi Hendrix"),
-            new Artist("tim", "Tim Reynolds")
-    );
+    private List<Artist> artists = mockData();
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();

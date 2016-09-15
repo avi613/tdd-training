@@ -2,11 +2,11 @@ package avi.edu.music.fan.service;
 
 import avi.edu.music.fan.artist.Artist;
 import avi.edu.music.fan.repository.ArtistRepository;
-import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 
 import java.util.List;
 
+import static avi.edu.music.fan.MockDB.mockData;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -16,11 +16,7 @@ public class ArtistServiceTest {
     private ArtistRepository artistRepository = mock(ArtistRepository.class);
     private ArtistService artistService = new ArtistService(artistRepository);
 
-    private List<Artist> artists = ImmutableList.of(
-            new Artist("bob", "Robert Johnson"),
-            new Artist("mud", "Muddy Blues"),
-            new Artist("jon", "John Lee Hooker")
-    );
+    private List<Artist> artists = mockData();
 
     @Test
     public void should_say_hello() {

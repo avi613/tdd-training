@@ -3,10 +3,14 @@ package avi.edu.music.fan.artist;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Value;
 
+import java.util.List;
+
 @Value
 public class Artist {
-    @JsonView(ArtistView.class)
+    @JsonView(ArtistPreview.class)
     private String id;
-    @JsonView(ArtistView.class)
+    @JsonView(ArtistPreview.class)
     private String name;
+
+    //private List<Fact> facts;
 }

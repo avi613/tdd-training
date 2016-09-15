@@ -1,11 +1,10 @@
 package avi.edu.music.fan.rest;
 
 import avi.edu.music.fan.artist.Artist;
-import avi.edu.music.fan.artist.ArtistView;
+import avi.edu.music.fan.artist.ArtistPreview;
 import avi.edu.music.fan.rest.exception.ArtistNotFoundException;
 import avi.edu.music.fan.service.ArtistService;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.google.common.collect.ImmutableList;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +28,7 @@ public class ArtistController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    @JsonView(ArtistView.class)
+    @JsonView(ArtistPreview.class)
     public List<Artist> getAllArtists() {
         return artistService.getAllArtists();
     }
