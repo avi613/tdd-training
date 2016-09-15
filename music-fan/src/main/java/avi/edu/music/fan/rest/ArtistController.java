@@ -29,18 +29,13 @@ public class ArtistController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @JsonView(ArtistView.class)
     public List<Artist> getAllArtists() {
-        return ImmutableList.of(
-                new Artist("neil", "Neil Young"),
-                new Artist("jimi", "Jimi Hendrix"),
-                new Artist("tim", "Tim Reynolds")
-        );
+        return artistService.getAllArtists();
     }
 
     @RequestMapping("/{id}")
-    @JsonView(ArtistView.class)
     public Artist getById(@PathVariable("id") String id) {
-        return Optional.ofNullable(artistService.getById(id))
-                .orElseThrow(() -> new ArtistNotFoundException("for id: " + id));
+        return Optional.ofNullable(artistService.getById(id)).orElseThrow(() -> new ArtistNotFoundException("for id: " + id));
     }
 }

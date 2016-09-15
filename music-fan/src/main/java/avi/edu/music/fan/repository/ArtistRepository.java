@@ -4,7 +4,9 @@ import avi.edu.music.fan.artist.Artist;
 import com.google.common.collect.ImmutableBiMap;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class ArtistRepository {
@@ -20,5 +22,9 @@ public class ArtistRepository {
 
     public Artist getById(String artistId) {
         return artists.get(artistId);
+    }
+
+    public List<Artist> getAllArtists() {
+        return artists.values().stream().collect(Collectors.toList());
     }
 }

@@ -2,6 +2,7 @@ package avi.edu.music.fan.rest;
 
 import avi.edu.music.fan.artist.Artist;
 import avi.edu.music.fan.service.ArtistService;
+import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -10,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.Matchers.anyString;
@@ -26,6 +29,12 @@ public class ArtistControllerWebTest {
     private ArtistService artistService = mock(ArtistService.class);
     private MockMvc mockMvc = standaloneSetup(new ArtistController(artistService)).build();
 
+    private List<Artist> artists = ImmutableList.of(
+            new Artist("neil", "Neil Young"),
+            new Artist("jimi", "Jimi Hendrix"),
+            new Artist("tim", "Tim Reynolds")
+    );
+
     @Test
     public void should_say_hello() throws Exception {
         when(artistService.sayHello()).thenReturn("This is a unit test mocking a web rest server");
@@ -37,6 +46,8 @@ public class ArtistControllerWebTest {
 
     @Test
     public void should_get_all_artists() throws Exception {
+        when(artistService.getAllArtists()).thenReturn(artists);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/artists").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{\"id\":\"neil\",\"name\":\"Neil Young\"},{\"id\":\"jimi\",\"name\":\"Jimi Hendrix\"},{\"id\":\"tim\",\"name\":\"Tim Reynolds\"}]"));
@@ -44,12 +55,11 @@ public class ArtistControllerWebTest {
 
     @Test
     public void should_get_artist_by_id() throws Exception {
-        Artist eddie = new Artist("van", "Eddie Van Hallen");
-        when(artistService.getById(anyString())).thenReturn(eddie);
+        when(artistService.getById(anyString())).thenReturn(artists.get(1));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/artists/whateverId").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{id: van, name: Eddie Van Hallen}"));
+                .andExpect(content().json("{id: jimi, name: Jimi Hendrix}"));
     }
 
     @Test

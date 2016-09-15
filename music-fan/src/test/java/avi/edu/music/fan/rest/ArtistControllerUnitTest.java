@@ -36,14 +36,14 @@ public class ArtistControllerUnitTest {
 
     @Test
     public void should_get_all_artists() {
+        when(artistService.getAllArtists()).thenReturn(artists);
         assertThat(artistController.getAllArtists()).isEqualTo(artists);
     }
 
     @Test
     public void should_get_artist_by_id() {
-        Artist neil = new Artist("neil", "Neil Young");
-        when(artistService.getById(anyString())).thenReturn(neil);
-        assertThat(artistController.getById(anyString())).isEqualTo(neil);
+        when(artistService.getById(anyString())).thenReturn(artists.get(0));
+        assertThat(artistController.getById(anyString())).isEqualTo(artists.get(0));
     }
 
     @Test

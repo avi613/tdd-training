@@ -1,7 +1,6 @@
 package avi.edu.music.fan.rest;
 
 import avi.edu.music.fan.artist.Artist;
-import com.google.common.collect.ImmutableList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,7 +40,7 @@ public class ArtistControllerIT {
     @Test
     public void should_get_all_artists() {
         ResponseEntity<String> response = restTemplate.getForEntity(baseURL.toString(), String.class);
-        assertThat(response.getBody()).isEqualTo("[{\"id\":\"neil\",\"name\":\"Neil Young\"},{\"id\":\"jimi\",\"name\":\"Jimi Hendrix\"},{\"id\":\"tim\",\"name\":\"Tim Reynolds\"}]");
+        assertThat(response.getBody()).isEqualTo("[{\"id\":\"1\",\"name\":\"Serges Gainsbourg\"},{\"id\":\"2\",\"name\":\"Georges Brassens\"},{\"id\":\"3\",\"name\":\"Edit Piaf\"}]");
     }
 
     @Test
