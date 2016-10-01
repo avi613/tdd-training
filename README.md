@@ -10,6 +10,8 @@ We introduce progressively the main concepts and tools commonly used in TDD.
 * JUnit (of course)
 * AssertJ
 * Mokito (what else)
+* JUnitParams
+* SpringTest
 
 But not only... We hope to bring front some clean code concepts, like single responsibility, immutability, concision and least complexity (YAGNI).
 
