@@ -16,8 +16,8 @@ public class Score {
 
     public String display() {
         if (isAdvantage == false)
-            return "Sets: " + numberOfGameWon + ", Current game: " + currentGame;
+            return "Games won: " + numberOfGameWon + ", Current game: " + currentGame;
         else
-            return "Sets: " + numberOfGameWon + ", Current game: advantage!!";
+            return "Games won: " + numberOfGameWon + ", Current game: advantage!!";
     }
 }
