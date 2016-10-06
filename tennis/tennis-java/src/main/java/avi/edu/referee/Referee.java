@@ -18,7 +18,7 @@ public class Referee {
     public String tellScore(Player player1, Player player2) {
         if (player1.getScore().getTrackPoints() >= 3 && player1.getScore().getTrackPoints() == player2.getScore().getTrackPoints())
             return "DEUCE!!";
-        else if (player1.getScore().getNumberOfGameWon() == 6 && player2.getScore().getNumberOfGameWon() == 6)
+        else if (player1.getScore().getNumberOfGamesWon() == 6 && player2.getScore().getNumberOfGamesWon() == 6)
             return "TIE BREAK!! " + player1.getName() + ": " + player1.getScore().display() + " v.s. " +
                     player2.getName() + ": " + player2.getScore().display();
         else {
@@ -41,24 +41,24 @@ public class Referee {
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
                     PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
-                    winner.getScore().getNumberOfGameWon(),
+                    winner.getScore().getNumberOfGamesWon(),
                     false));
         else if (winner.getScore().getTrackPoints() == 3) {
             winner.setScore(new Score(
                     0,
                     0,
-                    winner.getScore().getNumberOfGameWon() + 1,
+                    winner.getScore().getNumberOfGamesWon() + 1,
                     false));
             looser.setScore(new Score(
                     0,
                     0,
-                    looser.getScore().getNumberOfGameWon(),
+                    looser.getScore().getNumberOfGamesWon(),
                     false));
         } else if (winner.getScore().getTrackPoints() > 3)
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints(),
                     winner.getScore().getCurrentGame() + 1,
-                    winner.getScore().getNumberOfGameWon(),
+                    winner.getScore().getNumberOfGamesWon(),
                     winner.getScore().isAdvantage()));
     }
 
@@ -87,19 +87,19 @@ public class Referee {
     }
 
     protected void finalScore(Player player1, Player player2) {
-        if ((player1.getScore().getNumberOfGameWon() == 6 && player2.getScore().getNumberOfGameWon() <= 4)
-                || (player1.getScore().getNumberOfGameWon() <= 4 && player2.getScore().getNumberOfGameWon() == 6))
+        if ((player1.getScore().getNumberOfGamesWon() == 6 && player2.getScore().getNumberOfGamesWon() <= 4)
+                || (player1.getScore().getNumberOfGamesWon() <= 4 && player2.getScore().getNumberOfGamesWon() == 6))
             setWon = true;
-        if ((player1.getScore().getNumberOfGameWon() == 7 && player2.getScore().getNumberOfGameWon() == 5)
-                || (player1.getScore().getNumberOfGameWon() == 5 && player2.getScore().getNumberOfGameWon() == 7))
+        if ((player1.getScore().getNumberOfGamesWon() == 7 && player2.getScore().getNumberOfGamesWon() == 5)
+                || (player1.getScore().getNumberOfGamesWon() == 5 && player2.getScore().getNumberOfGamesWon() == 7))
             setWon = true;
-        if ((player1.getScore().getNumberOfGameWon() == 7 && player2.getScore().getNumberOfGameWon() == 6)
-                || (player1.getScore().getNumberOfGameWon() == 6 && player2.getScore().getNumberOfGameWon() == 7))
+        if ((player1.getScore().getNumberOfGamesWon() == 7 && player2.getScore().getNumberOfGamesWon() == 6)
+                || (player1.getScore().getNumberOfGamesWon() == 6 && player2.getScore().getNumberOfGamesWon() == 7))
             setWon = true;
     }
 
     public String andTheWinnerIs(Player player1, Player player2) {
-        if (player1.getScore().getNumberOfGameWon() > player2.getScore().getNumberOfGameWon())
+        if (player1.getScore().getNumberOfGamesWon() > player2.getScore().getNumberOfGamesWon())
             return "AND THE WINNER IS: " + player1.getName().toUpperCase() + "!!";
         else
             return "AND THE WINNER IS: " + player2.getName().toUpperCase() + "!!";

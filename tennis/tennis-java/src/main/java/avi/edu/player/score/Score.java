@@ -10,14 +10,11 @@ import lombok.experimental.Accessors;
 public class Score {
     private int trackPoints;
     private int currentGame;
-    private int numberOfGameWon;
-    // TODO: refactor - should be stateless
+    private int numberOfGamesWon;
     private boolean isAdvantage;
 
     public String display() {
-        if (isAdvantage == false)
-            return "Games won: " + numberOfGameWon + ", Current game: " + currentGame;
-        else
-            return "Games won: " + numberOfGameWon + ", Current game: advantage!!";
+        return "Games won: " + numberOfGamesWon +
+                ", Current game: " + (isAdvantage == false ? currentGame : "advantage!!");
     }
 }

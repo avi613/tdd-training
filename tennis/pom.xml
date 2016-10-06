@@ -6,7 +6,12 @@
 
     <groupId>avi.edu</groupId>
     <artifactId>tennis</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>tennis-java</module>
+        <module>tennis-drools</module>
+    </modules>
 
     <dependencies>
         <dependency>
