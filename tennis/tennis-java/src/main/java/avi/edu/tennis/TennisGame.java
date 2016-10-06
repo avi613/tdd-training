@@ -15,9 +15,9 @@ public class TennisGame {
         while (referee.isSetWon() == false) {
             int winPoint = random.nextInt(2);
             if (winPoint == 0)
-                referee.establishScore(player1, player2, player1);
+                referee.establishScore(player1, player2);
             else if (winPoint == 1)
-                referee.establishScore(player1, player2, player2);
+                referee.establishScore(player2, player1);
             System.out.println(referee.tellScore(player1, player2));
         }
 
