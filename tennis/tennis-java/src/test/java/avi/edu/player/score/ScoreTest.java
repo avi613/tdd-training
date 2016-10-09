@@ -16,6 +16,7 @@ public class ScoreTest {
             "2, 30, 0, false, Games won: 0, Current game: 30",
             "3, 40, 0, false, Games won: 0, Current game: 40",
             "0, 0, 1, false, Games won: 1, Current game: 0",
+            // TODO: remove advantage telling test
             "0, 0, 0, true, Games won: 0, Current game: advantage!!"
     })
     public void should_display_all_scores(int points, int current, int gamesWon, boolean advantage,

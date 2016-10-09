@@ -15,6 +15,7 @@ public class Referee {
         setWon = false;
     }
 
+    // TODO: move advantage telling here
     public String tellScore(Player player1, Player player2) {
         if (player1.getScore().getTrackPoints() >= 3 && player1.getScore().getTrackPoints() == player2.getScore().getTrackPoints())
             return "DEUCE!!";
@@ -28,11 +29,11 @@ public class Referee {
     }
 
     public void establishScore(Player winner, Player looser) {
-        setAdvantage(winner, looser);
         grantPointTo(winner, looser);
         finalScore(winner, looser);
     }
 
+    // TODO: And God created brms...
     private void grantPointTo(Player winner, Player looser) {
         if (winner.getScore().getTrackPoints() < 3)
             // scores 15, 30 or 40
@@ -41,7 +42,8 @@ public class Referee {
                     PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon(),
                     false));
-        else if (winner.getScore().getTrackPoints() == 3) {
+        else if ((winner.getScore().getTrackPoints() == 3 && looser.getScore().getTrackPoints() < 3)
+                || (winner.getScore().getTrackPoints() > 3 && looser.getScore().getTrackPoints() > 3 && winner.getScore().getTrackPoints() > looser.getScore().getTrackPoints())) {
             // game won
             winner.setScore(new Score(
                     0,
@@ -53,31 +55,21 @@ public class Referee {
                     0,
                     looser.getScore().getNumberOfGamesWon(),
                     false));
-        } else if (winner.getScore().getTrackPoints() > 3)
+        } else if (winner.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() == looser.getScore().getTrackPoints())
             // advantage
             winner.setScore(new Score(
-                    winner.getScore().getTrackPoints(),
-                    winner.getScore().getCurrentGame() + 1,
+                    winner.getScore().getTrackPoints() + 1,
+                    PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon(),
-                    winner.getScore().isAdvantage()));
-    }
-
-    // TODO: And God created brms...
-    private void setAdvantage(Player winner, Player looser) {
-        if (winner.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() == looser.getScore().getTrackPoints()) {
-            // advantage
-            winner.getScore().setTrackPoints(winner.getScore().getTrackPoints() + 1).setAdvantage(true);
-        } else if (winner.getScore().getTrackPoints() >= 3 && looser.getScore().getTrackPoints() >= 3
-                && winner.getScore().getTrackPoints() != looser.getScore().getTrackPoints()) {
-            winner.getScore().setAdvantage(false);
-            looser.getScore().setAdvantage(false);
-            if (winner.getScore().getTrackPoints() + 1 == looser.getScore().getTrackPoints())
-                // DEUCE
-                winner.getScore().setTrackPoints(winner.getScore().getTrackPoints() + 1);
-            else
-                // game won TODO: refactor
-                winner.getScore().setTrackPoints(3);
-        }
+                    true));
+        else if (winner.getScore().getTrackPoints() >= 3 && looser.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() + 1 == looser.getScore().getTrackPoints())
+            // DEUCE
+            winner.setScore(new Score(
+                    winner.getScore().getTrackPoints() + 1,
+                    PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
+                    winner.getScore().getNumberOfGamesWon(),
+                    false
+            ));
     }
 
     protected void finalScore(Player player1, Player player2) {

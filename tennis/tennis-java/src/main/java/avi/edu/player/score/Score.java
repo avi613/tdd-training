@@ -6,15 +6,14 @@ import lombok.experimental.Accessors;
 
 @Data
 @AllArgsConstructor
-@Accessors(chain = true)
 public class Score {
     private int trackPoints;
     private int currentGame;
     private int numberOfGamesWon;
+    // TODO: remove
     private boolean isAdvantage;
 
     public String display() {
-        return "Games won: " + numberOfGamesWon +
-                ", Current game: " + (isAdvantage == false ? currentGame : "advantage!!");
+        return "Games won: " + numberOfGamesWon + ", Current game: " + (isAdvantage == false ? currentGame : "advantage!!");
     }
 }

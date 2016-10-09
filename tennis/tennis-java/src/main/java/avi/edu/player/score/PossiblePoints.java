@@ -10,6 +10,6 @@ public class PossiblePoints {
     );
 
     public static int get(int i) {
-        return  i <= 3 ? points.get(i) : -1;
+        return  i <= 3 ? points.get(i) : 40 + i;
     }
 }

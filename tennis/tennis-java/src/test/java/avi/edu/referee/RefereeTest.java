@@ -29,8 +29,8 @@ public class RefereeTest {
             "3, 40, 0, 0, 0, 1, 0, 0, 0"
     })
     public void should_establish_score(int points, int current, int gamesWon,
-                                                     int points1, int current1, int gamesWon1,
-                                                     int points2, int current2, int gamesWon2) {
+                                       int points1, int current1, int gamesWon1,
+                                       int points2, int current2, int gamesWon2) {
         // given
         player1.setScore(new Score(points, current, gamesWon, false));
 
@@ -45,8 +45,8 @@ public class RefereeTest {
     @Test
     @Parameters({
             "3, 40, 0, 2, 30, 0, 3, 40, 0",
-            "4, 41, 0, 3, 40, 0, 4, 41, 0",
-            "5, 42, 0, 4, 41, 0, 5, 42, 0"
+            "4, 44, 0, 3, 40, 0, 4, 44, 0",
+            "5, 45, 0, 4, 44, 0, 5, 45, 0"
     })
     public void should_establish_deuce(int points1, int current1, int gamesWon1,
                                        int points2, int current2, int gamesWon2,
@@ -67,11 +67,11 @@ public class RefereeTest {
 
     @Test
     @Parameters({
-            "3, 40, 0, 4, 41, 0",
-            "4, 41, 0, 5, 42, 0"
+            "3, 40, 0, 4, 44, 0",
+            "4, 44, 0, 5, 45, 0"
     })
     public void should_establish_advantage(int points, int current, int gamesWon,
-                                                       int points1, int current1, int gamesWon1) {
+                                           int points1, int current1, int gamesWon1) {
         // given
         player1.setScore(new Score(points, current, gamesWon, false));
         player2.setScore(new Score(points, current, gamesWon, false));
@@ -84,11 +84,13 @@ public class RefereeTest {
         assertThat(player2.getScore()).isEqualTo(new Score(points, current, gamesWon, false));
     }
 
+    // TODO: add advantage telling test
+
     @Test
     public void should_grant_game_on_advantage() {
         // given
-        player1.setScore(new Score(5, 42, 0, true));
-        player2.setScore(new Score(4, 41, 0, false));
+        player1.setScore(new Score(5, 45, 0, true));
+        player2.setScore(new Score(4, 44, 0, false));
 
         // when
         referee.establishScore(player1, player2);
