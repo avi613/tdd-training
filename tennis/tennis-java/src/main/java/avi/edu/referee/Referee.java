@@ -85,9 +85,7 @@ public class Referee {
     }
 
     public String andTheWinnerIs(Player player1, Player player2) {
-        if (player1.getScore().getNumberOfGamesWon() > player2.getScore().getNumberOfGamesWon())
-            return "AND THE WINNER IS: " + player1.getName().toUpperCase() + "!!";
-        else
-            return "AND THE WINNER IS: " + player2.getName().toUpperCase() + "!!";
+        Player winner = player1.getScore().getNumberOfGamesWon() > player2.getScore().getNumberOfGamesWon() ? player1 : player2;
+        return "AND THE WINNER IS: " + winner.getName().toUpperCase() + "!!";
     }
 }
