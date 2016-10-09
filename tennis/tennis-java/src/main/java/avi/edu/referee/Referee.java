@@ -29,12 +29,12 @@ public class Referee {
     }
 
     public void establishScore(Player winner, Player looser) {
-        grantPointTo(winner, looser);
+        grantPoint(winner, looser);
         finalScore(winner, looser);
     }
 
     // TODO: And God created brms...
-    private void grantPointTo(Player winner, Player looser) {
+    private void grantPoint(Player winner, Player looser) {
         if (winner.getScore().getTrackPoints() < 3)
             // scores 15, 30 or 40
             winner.setScore(new Score(
