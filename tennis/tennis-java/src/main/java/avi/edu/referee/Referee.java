@@ -5,30 +5,8 @@ import avi.edu.player.score.PossiblePoints;
 import avi.edu.player.score.Score;
 
 public class Referee {
-    // TODO: move tie break telling outside of method
-    public String tellScore(Player player1, Player player2) {
-        if (player1.getScore().getTrackPoints() >= 3 && player1.getScore().getTrackPoints() == player2.getScore().getTrackPoints())
-            return "DEUCE!!";
-        else if (player1.getScore().getNumberOfGamesWon() == 6 && player2.getScore().getNumberOfGamesWon() == 6)
-            return "TIE BREAK!! " + player1.getName() + ": " + player1.getScore().display() + " v.s. " +
-                    player2.getName() + ": " + player2.getScore().display();
-        else if (player1.getScore().getTrackPoints() >= 3 && player2.getScore().getTrackPoints() >= 3 && player1.getScore().getTrackPoints() > player2.getScore().getTrackPoints())
-            return "ADVANTAGE: " + player1.getName().toUpperCase();
-        else if (player1.getScore().getTrackPoints() >= 3 && player2.getScore().getTrackPoints() >= 3 && player2.getScore().getTrackPoints() > player1.getScore().getTrackPoints())
-            return "ADVANTAGE: " + player2.getName().toUpperCase();
-        else {
-            return "Current Score: " + player1.getName() + ": " + player1.getScore().display() + " v.s. " +
-                    player2.getName() + ": " + player2.getScore().display();
-        }
-    }
-
-    public void establishScore(Player winner, Player looser) {
-        grantPoint(winner, looser);
-        finalScore(winner, looser);
-    }
-
     // And God created brms...
-    private void grantPoint(Player winner, Player looser) {
+    public void establishScore(Player winner, Player looser) {
         if (winner.getScore().getTrackPoints() < 3)
             // scores 15, 30 or 40
             winner.setScore(new Score(
@@ -71,10 +49,5 @@ public class Referee {
                 || (player1.getScore().getNumberOfGamesWon() == 6 && player2.getScore().getNumberOfGamesWon() == 7))
             return true;
         return false;
-    }
-
-    public String andTheWinnerIs(Player player1, Player player2) {
-        Player winner = player1.getScore().getNumberOfGamesWon() > player2.getScore().getNumberOfGamesWon() ? player1 : player2;
-        return "AND THE WINNER IS: " + winner.getName().toUpperCase() + "!!";
     }
 }

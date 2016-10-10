@@ -12,6 +12,6 @@ public class Score {
     private int numberOfGamesWon;
 
     public String display() {
-        return "Games won: " + numberOfGamesWon + ", Current game: " + currentGame;
+        return "Games won: " + numberOfGamesWon + " - Current game: " + currentGame;
     }
 }
