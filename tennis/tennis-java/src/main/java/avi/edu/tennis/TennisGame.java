@@ -10,13 +10,11 @@ public class TennisGame {
     public void play(Player player1, Player player2, Referee referee) {
         Random random = new Random();
 
-        referee.startSet();
-
-        while (referee.isSetWon() == false) {
+        while (referee.finalScore(player1, player2) == false) {
             int winPoint = random.nextInt(2);
             if (winPoint == 0)
                 referee.establishScore(player1, player2);
-            else if (winPoint == 1)
+            if (winPoint == 1)
                 referee.establishScore(player2, player1);
             System.out.println(referee.tellScore(player1, player2));
         }
@@ -25,8 +23,8 @@ public class TennisGame {
     }
 
     public static void main(String[] args) {
-        Player sarah = new Player("Sarah", new Score(0, 0, 0, false));
-        Player bernard = new Player("Bernard", new Score(0, 0, 0, false));
+        Player sarah = new Player("Sarah", new Score(0, 0, 0));
+        Player bernard = new Player("Bernard", new Score(0, 0, 0));
         Referee george = new Referee();
         TennisGame tennisGame = new TennisGame();
 

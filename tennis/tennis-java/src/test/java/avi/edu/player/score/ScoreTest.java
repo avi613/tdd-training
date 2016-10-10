@@ -11,17 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ScoreTest {
     @Test
     @Parameters({
-            "0, 0, 0, false, Games won: 0, Current game: 0",
-            "1, 15, 0, false, Games won: 0, Current game: 15",
-            "2, 30, 0, false, Games won: 0, Current game: 30",
-            "3, 40, 0, false, Games won: 0, Current game: 40",
-            "0, 0, 1, false, Games won: 1, Current game: 0",
-            // TODO: remove advantage telling test
-            "0, 0, 0, true, Games won: 0, Current game: advantage!!"
+            "0, 0, 0,  Games won: 0, Current game: 0",
+            "1, 15, 0, Games won: 0, Current game: 15",
+            "2, 30, 0, Games won: 0, Current game: 30",
+            "3, 40, 0, Games won: 0, Current game: 40",
+            "0, 0, 1, Games won: 1, Current game: 0"
     })
-    public void should_display_all_scores(int points, int current, int gamesWon, boolean advantage,
-                                          String wonDisplay, String currentDisplay) {
-        Score score = new Score(points, current, gamesWon, advantage);
+    public void should_display_all_scores(int points, int current, int gamesWon, String wonDisplay, String currentDisplay) {
+        Score score = new Score(points, current, gamesWon);
         assertThat(score.display()).isEqualTo(wonDisplay + ", " + currentDisplay);
     }
 }
