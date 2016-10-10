@@ -14,7 +14,7 @@ public class Referee {
                     WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
         else if ((winner.getScore().getTrackPoints() == 3 && looser.getScore().getTrackPoints() < 3)
-                || (winner.getScore().getTrackPoints() > 3 && looser.getScore().getTrackPoints() > 3 && winner.getScore().getTrackPoints() > looser.getScore().getTrackPoints())) {
+                || (winner.getScore().getTrackPoints() > 3 && looser.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() > looser.getScore().getTrackPoints())) {
             // game won
             winner.setScore(new Score(
                     0,
