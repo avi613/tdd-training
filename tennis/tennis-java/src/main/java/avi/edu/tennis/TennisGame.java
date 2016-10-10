@@ -17,7 +17,7 @@ public class TennisGame {
                 referee.establishScore(player1, player2);
             if (winPoint == 1)
                 referee.establishScore(player2, player1);
-            System.out.println(speaker.tellScore(player1, player2));
+            System.out.println(speaker.sayScore(player1, player2));
         }
 
         System.out.println(speaker.andTheWinnerIs(player1, player2));

@@ -1,7 +1,7 @@
 package avi.edu.referee;
 
 import avi.edu.player.Player;
-import avi.edu.player.score.PossiblePoints;
+import avi.edu.speaker.WeirdTennisPoints;
 import avi.edu.player.score.Score;
 
 public class Referee {
@@ -11,7 +11,7 @@ public class Referee {
             // scores 15, 30 or 40
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
-                    PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
+                    WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
         else if ((winner.getScore().getTrackPoints() == 3 && looser.getScore().getTrackPoints() < 3)
                 || (winner.getScore().getTrackPoints() > 3 && looser.getScore().getTrackPoints() > 3 && winner.getScore().getTrackPoints() > looser.getScore().getTrackPoints())) {
@@ -28,13 +28,13 @@ public class Referee {
             // advantage
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
-                    PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
+                    WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
         else if (winner.getScore().getTrackPoints() >= 3 && looser.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() + 1 == looser.getScore().getTrackPoints())
             // DEUCE
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
-                    PossiblePoints.get(winner.getScore().getTrackPoints() + 1),
+                    WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
     }
 

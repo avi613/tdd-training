@@ -1,10 +1,10 @@
-package avi.edu.player.score;
+package avi.edu.speaker;
 
 import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 
-public class PossiblePoints {
+public class WeirdTennisPoints {
     private static List<Integer> points = ImmutableList.of(
             0, 15, 30, 40
     );
