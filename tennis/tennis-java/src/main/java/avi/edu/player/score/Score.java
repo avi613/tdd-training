@@ -10,8 +10,4 @@ public class Score {
     private int trackPoints;
     private int currentGame;
     private int numberOfGamesWon;
-
-    public String display() {
-        return "Games won: " + numberOfGamesWon + " - Current game: " + currentGame;
-    }
 }

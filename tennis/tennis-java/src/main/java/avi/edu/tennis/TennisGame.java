@@ -3,7 +3,7 @@ package avi.edu.tennis;
 import avi.edu.player.Player;
 import avi.edu.player.score.Score;
 import avi.edu.referee.Referee;
-import avi.edu.referee.Speaker;
+import avi.edu.speaker.Speaker;
 
 import java.util.Random;
 

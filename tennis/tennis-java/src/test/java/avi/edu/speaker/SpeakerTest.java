@@ -1,4 +1,4 @@
-package avi.edu.referee;
+package avi.edu.speaker;
 
 import avi.edu.player.Player;
 import avi.edu.player.score.Score;
@@ -24,7 +24,7 @@ public class SpeakerTest {
 
         // then
         assertThat(speaker.tellScore(player1, player2))
-                .isEqualTo("Current Score: player_1: Games won: 3 - Current game: 15 v.s. player_2: Games won: 4 - Current game: 0");
+                .isEqualTo("player_1: Games won: 3 - Current game: 15 v.s. player_2: Games won: 4 - Current game: 0");
     }
 
     @Test
@@ -60,7 +60,7 @@ public class SpeakerTest {
 
     @Test
     @Parameters({
-            "0, 0, 6, 0, 0, 6, TIE BREAK!! Current Score: player_1: Games won: 6 - Current game: 0 v.s. player_2: Games won: 6 - Current game: 0",
+            "0, 0, 6, 0, 0, 6, TIE BREAK!! player_1: Games won: 6 - Current game: 0 v.s. player_2: Games won: 6 - Current game: 0",
             "3, 40, 6, 3, 40, 6, TIE BREAK!! DEUCE!!",
             "4, 44, 6, 3, 40, 6, TIE BREAK!! ADVANTAGE: PLAYER_1"
     })
