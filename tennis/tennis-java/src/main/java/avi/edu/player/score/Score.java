@@ -8,6 +8,5 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 public class Score {
     private int trackPoints;
-    private int currentGame;
     private int numberOfGamesWon;
 }

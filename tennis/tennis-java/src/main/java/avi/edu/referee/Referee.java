@@ -11,30 +11,25 @@ public class Referee {
             // scores 15, 30 or 40
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
-                    WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
         else if ((winner.getScore().getTrackPoints() == 3 && looser.getScore().getTrackPoints() < 3)
                 || (winner.getScore().getTrackPoints() > 3 && looser.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() > looser.getScore().getTrackPoints())) {
             // game won
             winner.setScore(new Score(
                     0,
-                    0,
                     winner.getScore().getNumberOfGamesWon() + 1));
             looser.setScore(new Score(
-                    0,
                     0,
                     looser.getScore().getNumberOfGamesWon()));
         } else if (winner.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() == looser.getScore().getTrackPoints())
             // advantage
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
-                    WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
         else if (winner.getScore().getTrackPoints() >= 3 && looser.getScore().getTrackPoints() >= 3 && winner.getScore().getTrackPoints() + 1 == looser.getScore().getTrackPoints())
             // DEUCE
             winner.setScore(new Score(
                     winner.getScore().getTrackPoints() + 1,
-                    WeirdTennisPoints.get(winner.getScore().getTrackPoints() + 1),
                     winner.getScore().getNumberOfGamesWon()));
     }
 

@@ -24,8 +24,8 @@ public class TennisGame {
     }
 
     public static void main(String[] args) {
-        Player sarah = new Player("Sarah", new Score(0, 0, 0));
-        Player bernard = new Player("Bernard", new Score(0, 0, 0));
+        Player sarah = new Player("Sarah", new Score(0, 0));
+        Player bernard = new Player("Bernard", new Score(0, 0));
         Referee george = new Referee();
         Speaker albert = new Speaker();
         TennisGame tennisGame = new TennisGame();
