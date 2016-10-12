@@ -19,14 +19,13 @@ public class RefereeTest {
 
     @Test
     @Parameters({
-            "0, 0, 1, 0, 0, 0",
-            "1, 0, 2, 0, 0, 0",
-            "2, 0, 3, 0, 0, 0",
-            "3, 0, 0, 1, 0, 0"
+            "0, 0, 1, 0",
+            "1, 0, 2, 0",
+            "2, 0, 3, 0",
+            "3, 0, 0, 1"
     })
     public void should_establish_score(int points, int gamesWon,
-                                       int points1, int gamesWon1,
-                                       int points2, int gamesWon2) {
+                                       int points1, int gamesWon1) {
         // given
         player1.setScore(new Score(points, gamesWon));
 
@@ -35,28 +34,26 @@ public class RefereeTest {
 
         // then
         assertThat(player1.getScore()).isEqualTo(new Score(points1, gamesWon1));
-        assertThat(player2.getScore()).isEqualTo(new Score(points2, gamesWon2));
+        assertThat(player2.getScore()).isEqualTo(new Score(0, 0));
     }
 
     @Test
     @Parameters({
-            "3, 0, 2, 0, 3, 0",
-            "4, 0, 3, 0, 4, 0",
-            "5, 0, 4, 0, 5, 0"
+            "3, 0, 2, 0",
+            "4, 0, 3, 0",
+            "5, 0, 4, 0"
     })
-    public void should_establish_deuce(int points1, int gamesWon1,
-                                       int points2, int gamesWon2,
-                                       int rPoint, int rGamesWon) {
+    public void should_establish_deuce(int dPoints, int dDamesWon, int points2, int gamesWon2) {
         // given
-        player1.setScore(new Score(points1, gamesWon1));
+        player1.setScore(new Score(dPoints, dDamesWon));
         player2.setScore(new Score(points2, gamesWon2));
 
         // when
         referee.establishScore(player2, player1);
 
         // then
-        assertThat(player1.getScore()).isEqualTo(new Score(rPoint, rGamesWon));
-        assertThat(player2.getScore()).isEqualTo(new Score(rPoint, rGamesWon));
+        assertThat(player1.getScore()).isEqualTo(new Score(dPoints, dDamesWon));
+        assertThat(player2.getScore()).isEqualTo(new Score(dPoints, dDamesWon));
     }
 
     @Test
@@ -64,8 +61,7 @@ public class RefereeTest {
             "3, 0, 4, 0",
             "4, 0, 5, 0"
     })
-    public void should_establish_advantage(int points, int gamesWon,
-                                           int points1, int gamesWon1) {
+    public void should_establish_advantage(int points, int gamesWon, int points1, int gamesWon1) {
         // given
         player1.setScore(new Score(points, gamesWon));
         player2.setScore(new Score(points, gamesWon));
@@ -111,8 +107,7 @@ public class RefereeTest {
             "0, 4, 0, 5",
             "0, 5, 0, 6"
     })
-    public void should_not_end_set(int points1, int gamesWon1,
-                                   int points2, int gamesWon2) {
+    public void should_not_end_set(int points1, int gamesWon1, int points2, int gamesWon2) {
         // given
         player1.setScore(new Score(points1, gamesWon1));
         player2.setScore(new Score(points2, gamesWon2));
@@ -138,8 +133,7 @@ public class RefereeTest {
             "0, 4, 0, 6",
             "0, 5, 0, 7"
     })
-    public void should_end_set(int points1, int gamesWon1,
-                               int points2, int gamesWon2) {
+    public void should_end_set(int points1, int gamesWon1, int points2, int gamesWon2) {
         // given
         player1.setScore(new Score(points1, gamesWon1));
         player2.setScore(new Score(points2, gamesWon2));
