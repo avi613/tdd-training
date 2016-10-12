@@ -1,7 +1,6 @@
 package avi.edu.referee;
 
 import avi.edu.player.Player;
-import avi.edu.speaker.WeirdTennisPoints;
 import avi.edu.player.score.Score;
 
 public class Referee {

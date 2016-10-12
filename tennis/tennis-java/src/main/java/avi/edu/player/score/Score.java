@@ -2,7 +2,6 @@ package avi.edu.player.score;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 @Data
 @AllArgsConstructor

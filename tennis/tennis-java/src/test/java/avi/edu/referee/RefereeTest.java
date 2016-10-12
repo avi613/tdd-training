@@ -4,7 +4,6 @@ import avi.edu.player.Player;
 import avi.edu.player.score.Score;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
