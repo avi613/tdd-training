@@ -31,7 +31,17 @@ The possible final scores of a set are 6/>=4, >=4/6, 7/5, 5/7, 7/6 or 6/7.
 ### Referee's statements
  - We assume that player1 and player2 are known by everyone and never switch.
  - When a player scores, referee states the score of both players without saying their names.
+ - A score of 0 is voiced "love". For example, if the score is 15 to 0, the referee shall say: "fifteen, love".
+ - When both players have the same score, say 30, referee shall say: "thirty all".
  - When there is Deuce, the referee simply states "Deuce"
  - When a player has the advantage, the referee states "Advantage: " and the name of the player.
  - When a player wins a game, the referee states: "Game: " and the name of the winner.
  - When a player wins the set, the referee states: "Game and Set: " and the name of the winner.
+
+### Board display
+At each moment, the board displays the score of the players in the following format:
+
+Player  | Games Won | Current Score
+------- | --------- | -------------
+Sarah   | 1         | 30
+Bernard | 3         | 15
