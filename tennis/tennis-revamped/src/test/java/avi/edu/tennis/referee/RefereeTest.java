@@ -16,6 +16,7 @@ public class RefereeTest {
     private Voice voice = mock(Voice.class);
     private Assessor assessor = mock(Assessor.class);
     private Referee referee = new Referee(voice, assessor);
+
     private Player player1 = new Player("player1", new Score(0, 0));
     private Player player2 = new Player("player2", new Score(0, 0));
 
@@ -121,6 +122,20 @@ public class RefereeTest {
 
         // then
         verify(voice, times(1)).say("TIE BREAK!");
+    }
+
+    @Test
+    public void should_not_state_tie_break() {
+        // given
+        player1.setScore(new Score(3, anyInt()));
+        player2.setScore(new Score(0, anyInt()));
+        when(assessor.assessTieBreak(player1, player2)).thenReturn(true);
+
+        // when
+        referee.stateTieBreak(player1, player2);
+
+        // then
+        verify(voice, never()).say("TIE BREAK!");
     }
 
     @Test

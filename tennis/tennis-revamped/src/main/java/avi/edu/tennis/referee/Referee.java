@@ -24,7 +24,7 @@ public class Referee {
     }
 
     public void stateTieBreak(Player player1, Player player2) {
-        if (assessor.assessTieBreak(player1, player2))
+        if (assessor.assessTieBreak(player1, player2) && player1.getCurrentGameScore() == 0 && player2.getCurrentGameScore() == 0)
             voice.say("TIE BREAK!");
     }
 
