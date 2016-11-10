@@ -16,16 +16,16 @@ public class RefereeStepsDefinitions {
     private Assessor assessor = new Assessor();
     private Referee referee = new Referee(voice, assessor);
 
-    private Player player1;
-    private Player player2;
+    private Player player1 = new Player("", new Score(0, 0));
+    private Player player2 = new Player("", new Score(0, 0));
 
     @Given("^Players (.*) and (.*)$")
-    public void initialize_players(String name1, String name2) {
-        player1 = new Player(name1, new Score(0, 0));
-        player2 = new Player(name2, new Score(0, 0));
+    public void initialize_players_names(String name1, String name2) {
+        player1.setName(name1);
+        player2.setName(name2);
     }
 
-    @And("^Their scores being (\\d+) and (\\d+)$")
+    @And("^Their score is (.*) and (.*)$")
     public void initialize_players_scores(int current1, int current2) {
         player1.setScore(new Score(current1, 0));
         player2.setScore(new Score(current2, 0));
@@ -43,5 +43,17 @@ public class RefereeStepsDefinitions {
     public void referee_should_state(String statement) {
         referee.stateScore(player1, player2);
         verify(voice).say(statement);
+    }
+
+    @When("^They both won 6 games$")
+    public void both_players_won_six_games() {
+        player1.setScore(new Score(0, 6));
+        player2.setScore(new Score(0, 6));
+    }
+
+    @Then("^Referee should say TIE BREAK$")
+    public void referee_should_state_tie_break() {
+        referee.stateTieBreak(player1, player2);
+        verify(voice).say("TIE BREAK!");
     }
 }
