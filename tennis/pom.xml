@@ -12,6 +12,7 @@
         <module>tennis-java</module>
         <module>tennis-drools</module>
         <module>tennis-revamped</module>
+        <module>acceptance</module>
     </modules>
 
     <dependencies>
