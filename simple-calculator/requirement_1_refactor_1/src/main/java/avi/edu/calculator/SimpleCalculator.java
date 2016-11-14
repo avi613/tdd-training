@@ -2,6 +2,7 @@ package avi.edu.calculator;
 
 import lombok.Value;
 
+import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 
 @Value
@@ -9,9 +10,7 @@ public class SimpleCalculator {
     private InputParser inputParser;
 
     public int add(String numbers) {
-        if (numbers.trim().isEmpty())
-            return 0;
-        return stream(inputParser.parse(numbers)).sum();
+        return asList(inputParser.parse(numbers)).isEmpty() ? 0 : stream(inputParser.parse(numbers)).sum();
     }
 
     public static void main(String[] args) {

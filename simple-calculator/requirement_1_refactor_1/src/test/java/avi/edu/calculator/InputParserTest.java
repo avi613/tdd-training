@@ -13,6 +13,11 @@ public class InputParserTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
+    public void should_return_an_empty_array() {
+        assertThat(inputParser.parse("")).isEmpty();
+    }
+
+    @Test
     public void should_return_an_array_of_ints() {
         assertThat(inputParser.parse("1,2")).isEqualTo(new int[]{1, 2});
     }

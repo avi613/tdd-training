@@ -18,11 +18,13 @@ public class SimpleCalculatorTest {
 
     @Test
     public void should_return_0_when_input_is_empty() {
+        when(inputParser.parse(anyString())).thenReturn(new int[] {});
         assertThat(calculator.add("")).isEqualTo(0);
     }
 
     @Test
     public void should_return_0_when_input_is_blank() {
+        when(inputParser.parse(anyString())).thenReturn(new int[] {});
         assertThat(calculator.add("   ")).isEqualTo(0);
     }
 
