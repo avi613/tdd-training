@@ -5,7 +5,7 @@ import static java.util.Arrays.stream;
 public class SimpleCalculator {
     public int add(String numbers) {
         if (numbers.trim().split(",").length > 2) {
-            throw new IllegalArgumentException("number of addies must not exceed 2");
+            throw new IllegalArgumentException("number of elements to add must not exceed 2");
         }
         if (numbers.trim().isEmpty())
             return 0;

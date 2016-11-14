@@ -38,7 +38,6 @@ public class SimpleCalculatorTest {
         assertThat(calculator.add("1,-2")).isEqualTo(-1);
     }
 
-
     @Test(expected = NumberFormatException.class)
     public void it_should_throw_an_exception_when_addies_are_not_integers() {
         calculator.add("1.5,2.3");
@@ -52,7 +51,7 @@ public class SimpleCalculatorTest {
     @Test
     public void it_should_throw_an_exception_when_number_of_addies_exceed_2() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("number of addies must not exceed 2");
+        thrown.expectMessage("number of elements to add must not exceed 2");
         calculator.add("1,2,3");
     }
 }
