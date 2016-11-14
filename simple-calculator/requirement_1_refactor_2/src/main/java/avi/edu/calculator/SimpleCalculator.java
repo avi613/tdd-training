@@ -1,6 +1,5 @@
 package avi.edu.calculator;
 
-import avi.edu.calculator.operation.Operation;
 import lombok.Value;
 
 @Value
@@ -8,8 +7,7 @@ public class SimpleCalculator {
     private InputParser inputParser;
 
     public int add(String numbers) {
-        Operation operation = inputParser.parse(numbers);
-        return operation.getOperator().operate(operation.getOperands());
+        return inputParser.parse(numbers).operate();
     }
 
     public static void main(String[] args) {
