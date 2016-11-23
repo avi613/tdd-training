@@ -51,7 +51,7 @@ public class InputParserTest {
     @Test
     public void should_throw_an_exception_when_list_length_is_greater_than_2() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Number of operands cannot be greater than 2");
+        thrown.expectMessage("Cannot process more than 2 numbers");
         inputParser.parseToOperation("1,2,3");
     }
 }

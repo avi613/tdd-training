@@ -7,13 +7,11 @@ import static java.util.Arrays.stream;
 
 public class InputParser {
     public Operation parseToOperation(String input) {
-        if (input.split(",").length > 2)
-            throw new IllegalArgumentException("Number of operands cannot be greater than 2");
+        if (input.split(",").length > 2) throw new IllegalArgumentException("Cannot process more than 2 numbers");
         return new Operation(
                 input.trim().isEmpty()
                         ? new int[]{0}
                         : stream(input.split(",")).map(String::trim).mapToInt(Integer::parseInt).toArray(),
-                new Addition()
-        );
+                new Addition());
     }
 }
