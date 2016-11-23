@@ -7,10 +7,10 @@ import static java.util.Arrays.stream;
 
 @Value
 public class SimpleCalculator {
-    private InputParser inputParser;
+    private InputParser parser;
 
-    public int add(String numbers) {
-        return asList(inputParser.parse(numbers)).isEmpty() ? 0 : stream(inputParser.parse(numbers)).sum();
+    public int add(String input) {
+        return stream(parser.parseToOperation(input)).sum();
     }
 
     public static void main(String[] args) {
