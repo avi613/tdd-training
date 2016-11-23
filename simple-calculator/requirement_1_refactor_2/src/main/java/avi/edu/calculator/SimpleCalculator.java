@@ -7,7 +7,7 @@ public class SimpleCalculator {
     private InputParser inputParser;
 
     public int add(String numbers) {
-        return inputParser.parse(numbers).operate();
+        return inputParser.parseToOperation(numbers).operate();
     }
 
     public static void main(String[] args) {

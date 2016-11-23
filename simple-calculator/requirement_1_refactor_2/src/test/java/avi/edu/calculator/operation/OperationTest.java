@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OperationTest {
     @Test
     public void should_add_two_numbers() {
-        Operation operation = new Operation(new int[] {1, 2}, new Addition());
-        assertThat(operation.operate()).isEqualTo(3);
+        assertThat(new Operation(new int[] {1, 2}, new Addition()).operate()).isEqualTo(3);
     }
 }
