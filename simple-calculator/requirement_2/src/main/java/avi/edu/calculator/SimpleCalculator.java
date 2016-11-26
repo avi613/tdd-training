@@ -1,5 +1,6 @@
 package avi.edu.calculator;
 
+import avi.edu.calculator.operator.OperatorFactory;
 import lombok.Value;
 
 @Value
@@ -7,11 +8,11 @@ public class SimpleCalculator {
     private InputParser inputParser;
 
     public int operate(String numbers) {
-        return inputParser.parse(numbers).operate();
+        return inputParser.parseToOperation(numbers).operate();
     }
 
     public static void main(String[] args) {
-        SimpleCalculator calculator = new SimpleCalculator(new InputParser());
+        SimpleCalculator calculator = new SimpleCalculator(new InputParser(new OperatorFactory()));
         System.out.println("1 + 2 = " + calculator.operate("1+2"));
         System.out.println("1 - 2 = " + calculator.operate("1-2"));
         System.out.println("2 * 4 = " + calculator.operate("2*4"));
@@ -35,6 +36,13 @@ public class SimpleCalculator {
         try {
             System.out.print("1 + 2 + 3 = ");
             calculator.operate("1+2+3");
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        try {
+            System.out.print("1 ; 2 = ");
+            calculator.operate("1;2");
         }
         catch (Exception e) {
             System.out.println(e.toString());

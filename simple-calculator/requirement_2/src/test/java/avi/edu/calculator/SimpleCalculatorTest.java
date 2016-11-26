@@ -10,37 +10,20 @@ import org.junit.rules.ExpectedException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class SimpleCalculatorTest {
-    private InputParser inputParser = mock(InputParser.class);
-    private SimpleCalculator calculator = new SimpleCalculator(inputParser);
+    private InputParser parser = mock(InputParser.class);
+    private SimpleCalculator calculator = new SimpleCalculator(parser);
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void should_return_the_only_element_of_a_singleton() {
-        when(inputParser.parse(anyString())).thenReturn(new Operation(new int[]{36}, new Addition()));
-        assertThat(calculator.operate("36")).isEqualTo(36);
-    }
+    public void should_invoke_input_parser_parse_to_operation_method() {
+        when(parser.parseToOperation(anyString())).thenReturn(new Operation(new int[]{36, 12}, new Addition()));
+        calculator.operate("36+12");
 
-    @Test
-    public void should_add_two_numbers() {
-        when(inputParser.parse(anyString())).thenReturn(new Operation(new int[]{36, 45}, new Addition()));
-        assertThat(calculator.operate("36+45")).isEqualTo(81);
-    }
-
-    @Test
-    public void should_multiply_two_numbers() {
-        when(inputParser.parse(anyString())).thenReturn(new Operation(new int[]{5, 7}, new Multiplication()));
-        assertThat(calculator.operate("5*7")).isEqualTo(35);
-    }
-
-    @Test
-    public void should_subtract_two_numbers() {
-        when(inputParser.parse(anyString())).thenReturn(new Operation(new int[]{5, 7}, new Subtraction()));
-        assertThat(calculator.operate("5-7")).isEqualTo(-2);
+        verify(parser, times(1)).parseToOperation("36+12");
     }
 }

@@ -8,11 +8,6 @@ public class SubtractionTest {
     private Subtraction subtraction = new Subtraction();
 
     @Test
-    public void should_return_0_when_input_is_null() {
-        assertThat(subtraction.operate(null)).isEqualTo(0);
-    }
-
-    @Test
     public void should_return_the_only_element_of_a_singleton() {
         assertThat(subtraction.operate(new int[]{5})).isEqualTo(5);
     }
