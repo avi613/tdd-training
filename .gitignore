@@ -2,9 +2,5 @@
 .idea/
 *.iml
 
-# gradke
-.gradle/
-gradle/
-
 # builds
 target/
