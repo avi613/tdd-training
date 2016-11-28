@@ -16,9 +16,6 @@ public class SimpleCalculatorTest {
     private InputParser parser = mock(InputParser.class);
     private SimpleCalculator calculator = new SimpleCalculator(parser);
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Test
     public void should_invoke_input_parser_parse_to_operation_method() {
         when(parser.parseToOperation(anyString())).thenReturn(new Operation(new int[]{36, 12}, new Addition()));

@@ -31,4 +31,11 @@ public class OperatorFactoryTest {
     public void should_return_a_subtraction() {
         assertThat(factory.parseToOperator("2-5")).isExactlyInstanceOf(Subtraction.class);
     }
+
+    @Test
+    public void should_raise_unsupported_operation_exception() {
+        thrown.expect(UnsupportedOperationException.class);
+        thrown.expectMessage("unsupported operation: 1;2");
+        factory.parseToOperator("1;2");
+    }
 }

@@ -8,8 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class OperatorFactory {
+    private final String allowedOperators = "\\+|\\*|-";
     private Map<String, Supplier<Operator>> operators = ImmutableMap.of(
-            "+", Addition::new, "*", Multiplication::new, "-", Subtraction::new, "", Identity::new
+            "+", Addition::new, "*", Multiplication::new, "-", Subtraction::new, "ID", Identity::new
     );
 
     public Operator parseToOperator(String input) {
@@ -17,7 +18,11 @@ public class OperatorFactory {
     }
 
     private String extractOperator(String input) {
-        Matcher matcher = Pattern.compile("\\+|\\*|-").matcher(input);
-        return matcher.find() ? matcher.group() : "";
+        Matcher matcher = Pattern.compile(allowedOperators).matcher(input);
+
+        if (matcher.find()) return matcher.group();
+        if (input.matches("\\d+")) return "ID";
+
+        throw new UnsupportedOperationException("unsupported operation: " + input);
     }
 }
