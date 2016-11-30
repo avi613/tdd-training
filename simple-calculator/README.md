@@ -13,10 +13,11 @@ Both techniques are useful in real projects.
 
 The Simple Calculator 
 
- 1. should be able to perform `Addition`, `Subtraction` and `Multiplication`  on integers
- 2. should process String inputs, as in "1+2", "4-1", "2*3"
- 3. should return 0 when input is empty
- 4. should return 0 when input is blank
- 5. when a list contains a single element, it should return this element
- 6. when a list contains more than 2 elements, it should not process the `Operation`
- 7. when elements from input are not integers, it should not process the `Operation`
+ 1. should be able to perform `Addition`, `Subtraction` and `Multiplication` on integers
+ 2. should return a singleton `Operand` as it is
+ 3. should process String inputs, as in "1+2", "4-1", "2*3" or "8"
+ 4. should return 0 when input is empty
+ 5. should return 0 when input is blank
+ 6. should reject `Operations` on non-integer `Operands`
+ 7. should reject `Operations` with more than two `Operands`
+ 8. should reject unsupported operations
