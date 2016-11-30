@@ -9,12 +9,12 @@ import java.util.regex.Pattern;
 
 public class OperatorFactory {
     private final String allowedOperators = "\\+|\\*|-";
-    private Map<String, Supplier<Operator>> operators = ImmutableMap.of(
+    private Map<String, Supplier<Operator>> supportedOperators = ImmutableMap.of(
             "+", Addition::new, "*", Multiplication::new, "-", Subtraction::new, "ID", Identity::new
     );
 
     public Operator parseToOperator(String input) {
-        return operators.get(extractOperator(input)).get();
+        return supportedOperators.get(extractOperator(input)).get();
     }
 
     private String extractOperator(String input) {
