@@ -1,7 +1,9 @@
 package avi.edu.rappersdelight.rest;
 
 import avi.edu.rappersdelight.rapper.Rapper;
+import avi.edu.rappersdelight.rapper.RapperPreview;
 import avi.edu.rappersdelight.repository.RapperRepository;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ public class RapperController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @JsonView(RapperPreview.class)
     public List<Rapper> getAllRappers() {
         return rapperRepository.getAllRappers();
     }

@@ -1,6 +1,8 @@
 package avi.edu.rappersdelight.repository;
 
+import avi.edu.rappersdelight.rapper.Delight;
 import avi.edu.rappersdelight.rapper.Rapper;
+import com.google.common.collect.ImmutableList;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -15,7 +17,10 @@ public class RapperRepositoryTest {
 
     @Test
     public void should_return_rapper_by_id() {
-        assertThat(rapperRepository.getRapperById("1")).isEqualTo(new Rapper("1", "Red Man"));
+        Rapper redMan = new Rapper("1", "Red Man", ImmutableList.of(
+                new Delight("Not your mom's food"), new Delight("sugar 'n' cream")));
+
+        assertThat(rapperRepository.getRapperById("1")).isEqualTo(redMan);
     }
 
     @Test
