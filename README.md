@@ -1,19 +1,23 @@
 # TDD training
-This repo is meant for educational purposes.
+Welcome to my TDD training sessions in Java. This content is regularly augmented from new material and teaching feedback. Its goal is to provide you with
+
+ - good ready to go testing techniques staged in moderately complex yet realistic situations,
+ - step stone to recursion programming, refactoring functional code, REST services and Web architectures
+ - an introduction to most popular testing frameworks: Junit, AssertJ, Mockito, Cucumber, JUnitParams, SpringTest
+
+What this repo is not going to do for you is
+
+ - teach you how to test first!
+ - leverage TDD as design assistant tool. See [Does TDD Really Lead To Good Design](https://codurance.com/2015/05/12/does-tdd-lead-to-good-design/) for a discussion on this topic.
+
+These topics have to be discussed, transmitted. If you have no prior experience in TDD, just seeing the code as it is now won't help you understand how it has been constructed, step by step, using tests.
 
 ## Introduction
-In this repository, you will find moderate complexity projects to help you gain skills in Test Driven Development.
+Here is the recommended learning path.
 
-All projects are decomposed in sub-projects, each one introducing a new requirement. We intend by that to make these projects feel like working in a real agile environment.
-
-We introduce progressively the main concepts and tools commonly used in TDD.
-* JUnit (of course)
-* AssertJ
-* Mokito (what else)
-* JUnitParams
-* SpringTest
-
-But not only... We hope to bring front some clean code concepts, like single responsibility, immutability, concision and least complexity (YAGNI).
+You may start with the Fibonacci Kata. We give there a reference to a video featuring test first and recursion.
+The Simple Calculator kata is dedicated to **refactoring a piece of software before introducing a new functionality** (please note that this kata dramatically needs to be renamed as it has nothing to do with simple calculator kata any more!)
+The Tennis kata takes you to Behaviour Drive Development and parametrized tests.
 
 ## Why TDD
 Test Driven Development is a fantastic method that helps you to build clean, dependable and robust software. It's a must do!
