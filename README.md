@@ -15,9 +15,9 @@ These topics have to be discussed, transmitted. If you have no prior experience 
 ## Introduction
 Here is the recommended learning path.
 
-You may start with the Fibonacci Kata. We give there a reference to a video featuring test first and recursion.
+You may start with the Fibonacci Kata. We give there a reference to a video featuring **test first and recursion**.
 The Simple Calculator kata is dedicated to **refactoring a piece of software before introducing a new functionality** (please note that this kata dramatically needs to be renamed as it has nothing to do with simple calculator kata any more!)
-The Tennis kata takes you to Behaviour Drive Development and parametrized tests.
+The Tennis kata takes you to **Behaviour Drive Development and parametrized tests**.
 
 ## Why TDD
 Test Driven Development is a fantastic method that helps you to build clean, dependable and robust software. It's a must do!
