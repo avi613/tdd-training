@@ -1,4 +1,4 @@
-# TDD training
+# TDD Training Java
 Welcome to my TDD training sessions in Java. This content is regularly augmented from new material and teaching feedback. Its goal is to provide you with
 
  - good ready to go testing techniques staged in moderately complex yet realistic situations,
